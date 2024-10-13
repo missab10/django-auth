@@ -1,0 +1,28 @@
+{% extends "layout/app.html" %}
+
+{% block content %}
+
+<div class="row justify-content-center">
+    <div class="col-sm-6">
+        <h2 class="text-muted">Login</h2>
+        <form method="POST" action="{% url 'login' %}">
+            {% csrf_token %}
+            <div class="form-group">
+                <label for="{{form.username.id_for_label}}">Username</label>
+                <input type="text" name="{{form.username.name}}" value="{{form.username.value}}" class="form-group" id="">
+                <span class="text-danger">{{form.username.errors}}</span>
+            </div>
+            <div class="form-group">
+                <label for="{{form.password.id_for_label}}">password</label>
+                <input type="password" name="{{form.password.name}}" value="{{form.password.value}}" class="form-group" id="">
+                <span class="text-danger">{{form.password.errors}}</span>
+            </div>
+            <button type="submit">Submit</button>
+            <a href="{% url 'register'%}" class="btn btn-default">Create anew accountg</a>
+        </form>
+
+    </div>
+
+</div>
+
+{% endblock %}
